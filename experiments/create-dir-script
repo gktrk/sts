@@ -1,20 +1,68 @@
 # Create Directory Structure
 
 for dname in AlgorithmTesting BBS CCG G-SHA1 LCG MODEXP MS QCG1 QCG2 XOR ; do 
-	[ ! -e "$dname" ] && mkdir "$dname"
-	mkdir $dname/Frequency
-	mkdir $dname/BlockFrequency
-	mkdir $dname/Runs
-	mkdir $dname/LongestRun
-	mkdir $dname/Rank
-	mkdir $dname/FFT
-	mkdir $dname/NonOverlappingTemplate
-	mkdir $dname/OverlappingTemplate
-	mkdir $dname/Universal
-	mkdir $dname/LinearComplexity
-	mkdir $dname/Serial
-	mkdir $dname/ApproximateEntropy
-	mkdir $dname/CumulativeSums
-	mkdir $dname/RandomExcursions
-	mkdir $dname/RandomExcursionsVariant
+	if [ ! -e $dname ]; then
+		mkdir $dname
+		true
+	fi
+	if [ ! -e $dname/Frequency ]; then
+		mkdir $dname/Frequency
+		true
+	fi
+	if [ ! -e $dname/BlockFrequency ]; then
+		mkdir $dname/BlockFrequency
+		true
+	fi
+	if [ ! -e $dname/Runs ]; then
+		mkdir $dname/Runs
+		true
+	fi
+	if [ ! -e $dname/LongestRun ]; then
+		mkdir $dname/LongestRun
+		true
+	fi
+	if [ ! -e $dname/Rank ]; then
+		mkdir $dname/Rank
+		true
+	fi
+	if [ ! -e $dname/FFT ]; then
+		mkdir $dname/FFT
+		true
+	fi
+	if [ ! -e $dname/NonOverlappingTemplate ]; then
+		mkdir $dname/NonOverlappingTemplate
+		true
+	fi
+	if [ ! -e $dname/OverlappingTemplate ]; then
+		mkdir $dname/OverlappingTemplate
+		true
+	fi
+	if [ ! -e $dname/Universal ]; then
+		mkdir $dname/Universal
+		true
+	fi
+	if [ ! -e $dname/LinearComplexity ]; then
+		mkdir $dname/LinearComplexity
+		true
+	fi
+	if [ ! -e $dname/Serial ]; then
+		mkdir $dname/Serial
+		true
+	fi
+	if [ ! -e $dname/ApproximateEntropy ]; then
+		mkdir $dname/ApproximateEntropy
+		true
+	fi
+	if [ ! -e $dname/CumulativeSums ]; then
+		mkdir $dname/CumulativeSums
+		true
+	fi
+	if [ ! -e $dname/RandomExcursions ]; then
+		mkdir $dname/RandomExcursions
+		true
+	fi
+	if [ ! -e $dname/RandomExcursionsVariant ]; then
+		mkdir $dname/RandomExcursionsVariant
+		true
+	fi
 done
