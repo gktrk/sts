@@ -15,7 +15,9 @@ OBJ = $(OBJDIR)/assess.o $(OBJDIR)/frequency.o $(OBJDIR)/blockFrequency.o \
       $(OBJDIR)/dfft.o $(OBJDIR)/cephes.o $(OBJDIR)/matrix.o \
       $(OBJDIR)/utilities.o $(OBJDIR)/generators.o $(OBJDIR)/genutils.o
 
-assess: $(OBJ)
+all: assess experiments-dirs
+
+assess: $(OBJDIR) $(OBJ)
 	$(CC) -o $@ $(OBJ) -lm
 
 $(OBJDIR)/assess.o: $(SRCDIR)/assess.c defs.h decls.h utilities.h
@@ -88,7 +90,15 @@ $(OBJDIR)/generators.o: $(SRCDIR)/generators.c defs.h externs.h utilities.h \
         config.h generators.h
 	$(CC) -o $@ $(GCCFLAGS) $(SRCDIR)/generators.c
 
+$(OBJDIR):
+	@if [ ! -e $(OBJDIR) ]; then mkdir $(OBJDIR); fi
+
+experiments-dirs: experiments/create-dir-script
+	@cd experiments && $(SHELL) create-dir-script
+
 clean:
 	rm -f assess $(OBJDIR)/*.o
 
 rebuild: clean assess
+
+.PHONY: create-objdir experiments-dirs
