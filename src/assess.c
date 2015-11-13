@@ -50,6 +50,8 @@
 #include "../include/cephes.h"  
 #include "../include/utilities.h"
 
+char	*experimentsDir;
+
 void	partitionResultFile(int numOfFiles, int numOfSequences, int option, int testNameID);
 void	postProcessResults(int option);
 int		cmp(const double *a, const double *b);
@@ -63,11 +65,17 @@ main(int argc, char *argv[])
 	char	*streamFile;	/* STREAM FILENAME     */
 	
 
-	if ( argc != 2 ) {
-		printf("Usage: %s <stream length>\n", argv[0]);
-		printf("   <stream length> is the length of the individual bit stream(s) to be processed\n");
+	if ( (argc != 2) && (argc != 3) ) {
+		printf("Usage: %s <stream length> [output dir]\n", argv[0]);
+		printf("   <stream length> is the length of the individual bit stream(s) to be processed\n"
+		       "   [output dir] must exist. Use create-dir-script to populate the output dir\n");
 		return 0;
 	}
+
+	if (argc == 3)
+		experimentsDir = strdup(argv[2]);
+	else
+		experimentsDir = strdup("experiments");
 
 	tp.n = atoi(argv[1]);
 	tp.blockFrequencyBlockLength = 128;
@@ -108,6 +116,7 @@ main(int argc, char *argv[])
 	fprintf(summary, "------------------------------------------------------------------------------\n");
 	postProcessResults(option);
 	fclose(summary);
+	free(experimentsDir);
 
 	return 1;
 }
@@ -125,7 +134,7 @@ partitionResultFile(int numOfFiles, int numOfSequences, int option, int testName
 	for ( i=0; i<MAXFILESPERMITTEDFORPARTITION; i++ )
 		s[i] = (char*)calloc(200, sizeof(char));
 	
-	sprintf(resultsDir, "experiments/%s/%s/results.txt", generatorDir[option], testNames[testNameID]);
+	sprintf(resultsDir, "%s/%s/%s/results.txt", experimentsDir, generatorDir[option], testNames[testNameID]);
 	
 	if ( (fp[numOfFiles] = fopen(resultsDir, "r")) == NULL ) {
 		printf("%s", resultsDir);
@@ -135,11 +144,11 @@ partitionResultFile(int numOfFiles, int numOfSequences, int option, int testName
 	
 	for ( i=0; i<numOfFiles; i++ ) {
 		if ( i < 10 )
-			sprintf(s[i], "experiments/%s/%s/data%1d.txt", generatorDir[option], testNames[testNameID], i+1);
+			sprintf(s[i], "%s/%s/%s/data%1d.txt", experimentsDir, generatorDir[option], testNames[testNameID], i+1);
 		else if (i < 100)
-			sprintf(s[i], "experiments/%s/%s/data%2d.txt", generatorDir[option], testNames[testNameID], i+1);
+			sprintf(s[i], "%s/%s/%s/data%2d.txt", experimentsDir, generatorDir[option], testNames[testNameID], i+1);
 		else
-			sprintf(s[i], "experiments/%s/%s/data%3d.txt", generatorDir[option], testNames[testNameID], i+1);
+			sprintf(s[i], "%s/%s/%s/data%3d.txt", experimentsDir, generatorDir[option], testNames[testNameID], i+1);
 	}
 	numread = 0;
 	m = numOfFiles/20;
@@ -223,11 +232,11 @@ postProcessResults(int option)
 					numOfFiles = 2;
 				for ( k=0; k<numOfFiles; k++ ) {
 					if ( k < 10 )
-						sprintf(s, "experiments/%s/%s/data%1d.txt", generatorDir[option], testNames[i], k+1);
+						sprintf(s, "%s/%s/%s/data%1d.txt", experimentsDir, generatorDir[option], testNames[i], k+1);
 					else if ( k < 100 )
-						sprintf(s, "experiments/%s/%s/data%2d.txt", generatorDir[option], testNames[i], k+1);
+						sprintf(s, "%s/%s/%s/data%2d.txt", experimentsDir, generatorDir[option], testNames[i], k+1);
 					else
-						sprintf(s, "experiments/%s/%s/data%3d.txt", generatorDir[option], testNames[i], k+1);
+						sprintf(s, "%s/%s/%s/data%3d.txt", experimentsDir, generatorDir[option], testNames[i], k+1);
 					if ( (i == TEST_RND_EXCURSION) || (i == TEST_RND_EXCURSION_VAR) ) 
 						randomExcursionSampleSize = computeMetrics(s,i);
 					else
@@ -235,7 +244,7 @@ postProcessResults(int option)
 				}
 			}
 			else {
-				sprintf(s, "experiments/%s/%s/results.txt", generatorDir[option], testNames[i]);
+				sprintf(s, "%s/%s/%s/results.txt", experimentsDir, generatorDir[option], testNames[i]);
 				generalSampleSize = computeMetrics(s,i);
 			}
 		}

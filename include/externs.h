@@ -15,3 +15,4 @@ extern int			testVector[NUMOFTESTS+1];
 
 extern char	generatorDir[NUMOFGENERATORS][20];
 extern char	testNames[NUMOFTESTS+1][32];
+extern char	*experimentsDir;

@@ -370,12 +370,12 @@ openOutputStreams(int option)
 	int		i, numOfBitStreams, numOfOpenFiles = 0;
 	char	freqfn[200], summaryfn[200], statsDir[200], resultsDir[200];
 	
-	sprintf(freqfn, "experiments/%s/freq.txt", generatorDir[option]);
+	sprintf(freqfn, "%s/%s/freq.txt", experimentsDir, generatorDir[option]);
 	if ( (freqfp = fopen(freqfn, "w")) == NULL ) {
 		printf("\t\tMAIN:  Could not open freq file: <%s>", freqfn);
 		exit(-1);
 	}
-	sprintf(summaryfn, "experiments/%s/finalAnalysisReport.txt", generatorDir[option]);
+	sprintf(summaryfn, "%s/%s/finalAnalysisReport.txt", experimentsDir, generatorDir[option]);
 	if ( (summary = fopen(summaryfn, "w")) == NULL ) {
 		printf("\t\tMAIN:  Could not open stats file: <%s>", summaryfn);
 		exit(-1);
@@ -383,8 +383,8 @@ openOutputStreams(int option)
 	
 	for( i=1; i<=NUMOFTESTS; i++ ) {
 		if ( testVector[i] == 1 ) {
-			sprintf(statsDir, "experiments/%s/%s/stats.txt", generatorDir[option], testNames[i]);
-			sprintf(resultsDir, "experiments/%s/%s/results.txt", generatorDir[option], testNames[i]);
+			sprintf(statsDir, "%s/%s/%s/stats.txt", experimentsDir, generatorDir[option], testNames[i]);
+			sprintf(resultsDir, "%s/%s/%s/results.txt", experimentsDir, generatorDir[option], testNames[i]);
 			if ( (stats[i] = fopen(statsDir, "w")) == NULL ) {	/* STATISTICS LOG */
 				printf("ERROR: LOG FILES COULD NOT BE OPENED.\n");
 				printf("       MAX # OF OPENED FILES HAS BEEN REACHED = %d\n", numOfOpenFiles);
