@@ -14,64 +14,13 @@ for dname in AlgorithmTesting BBS CCG G-SHA1 LCG MODEXP MS QCG1 QCG2 XOR ; do
 		mkdir "$basedir"/$dname
 		true
 	fi
-	if [ ! -e "$basedir"/$dname/Frequency ]; then
-		mkdir "$basedir"/$dname/Frequency
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/BlockFrequency ]; then
-		mkdir "$basedir"/$dname/BlockFrequency
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/Runs ]; then
-		mkdir "$basedir"/$dname/Runs
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/LongestRun ]; then
-		mkdir "$basedir"/$dname/LongestRun
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/Rank ]; then
-		mkdir "$basedir"/$dname/Rank
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/FFT ]; then
-		mkdir "$basedir"/$dname/FFT
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/NonOverlappingTemplate ]; then
-		mkdir "$basedir"/$dname/NonOverlappingTemplate
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/OverlappingTemplate ]; then
-		mkdir "$basedir"/$dname/OverlappingTemplate
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/Universal ]; then
-		mkdir "$basedir"/$dname/Universal
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/LinearComplexity ]; then
-		mkdir "$basedir"/$dname/LinearComplexity
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/Serial ]; then
-		mkdir "$basedir"/$dname/Serial
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/ApproximateEntropy ]; then
-		mkdir "$basedir"/$dname/ApproximateEntropy
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/CumulativeSums ]; then
-		mkdir "$basedir"/$dname/CumulativeSums
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/RandomExcursions ]; then
-		mkdir "$basedir"/$dname/RandomExcursions
-		true
-	fi
-	if [ ! -e "$basedir"/$dname/RandomExcursionsVariant ]; then
-		mkdir "$basedir"/$dname/RandomExcursionsVariant
-		true
-	fi
+	for subdname in Frequency BlockFrequency Runs LongestRun Rank FFT \
+			NonOverlappingTemplate OverlappingTemplate Universal \
+			LinearComplexity Serial ApproximateEntropy CumulativeSums \
+			RandomExcursions RandomExcursionsVariant; do
+		if [ ! -e "$basedir"/$dname/$subdname ]; then
+			mkdir "$basedir"/$dname/$subdname
+			true
+		fi
+	done
 done
