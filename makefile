@@ -93,8 +93,8 @@ $(OBJDIR)/generators.o: $(SRCDIR)/generators.c defs.h externs.h utilities.h \
 $(OBJDIR):
 	@if [ ! -e $(OBJDIR) ]; then mkdir $(OBJDIR); fi
 
-experiments-dirs: experiments/create-dir-script
-	@cd experiments && $(SHELL) create-dir-script
+experiments-dirs: create-dir-script
+	@$(SHELL) create-dir-script experiments
 
 clean:
 	rm -f assess $(OBJDIR)/*.o
