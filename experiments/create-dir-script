@@ -1,68 +1,77 @@
 # Create Directory Structure
 
+basedir="."
+
+if [ -n "$1" ]; then
+	basedir="$1"
+	if [ ! -e "$basedir" ]; then
+		mkdir "$basedir"
+	fi
+fi
+
 for dname in AlgorithmTesting BBS CCG G-SHA1 LCG MODEXP MS QCG1 QCG2 XOR ; do 
-	if [ ! -e $dname ]; then
-		mkdir $dname
+	if [ ! -e "$basedir"/$dname ]; then
+		mkdir "$basedir"/$dname
 		true
 	fi
-	if [ ! -e $dname/Frequency ]; then
-		mkdir $dname/Frequency
+	if [ ! -e "$basedir"/$dname/Frequency ]; then
+		mkdir "$basedir"/$dname/Frequency
 		true
 	fi
-	if [ ! -e $dname/BlockFrequency ]; then
-		mkdir $dname/BlockFrequency
+	if [ ! -e "$basedir"/$dname/BlockFrequency ]; then
+		mkdir "$basedir"/$dname/BlockFrequency
 		true
 	fi
-	if [ ! -e $dname/Runs ]; then
-		mkdir $dname/Runs
+	if [ ! -e "$basedir"/$dname/Runs ]; then
+		mkdir "$basedir"/$dname/Runs
 		true
 	fi
-	if [ ! -e $dname/LongestRun ]; then
-		mkdir $dname/LongestRun
+	if [ ! -e "$basedir"/$dname/LongestRun ]; then
+		mkdir "$basedir"/$dname/LongestRun
 		true
 	fi
-	if [ ! -e $dname/Rank ]; then
-		mkdir $dname/Rank
+	if [ ! -e "$basedir"/$dname/Rank ]; then
+		mkdir "$basedir"/$dname/Rank
 		true
 	fi
-	if [ ! -e $dname/FFT ]; then
-		mkdir $dname/FFT
+	if [ ! -e "$basedir"/$dname/FFT ]; then
+		mkdir "$basedir"/$dname/FFT
 		true
 	fi
-	if [ ! -e $dname/NonOverlappingTemplate ]; then
-		mkdir $dname/NonOverlappingTemplate
+	if [ ! -e "$basedir"/$dname/NonOverlappingTemplate ]; then
+		mkdir "$basedir"/$dname/NonOverlappingTemplate
 		true
 	fi
-	if [ ! -e $dname/OverlappingTemplate ]; then
-		mkdir $dname/OverlappingTemplate
+	if [ ! -e "$basedir"/$dname/OverlappingTemplate ]; then
+		mkdir "$basedir"/$dname/OverlappingTemplate
 		true
 	fi
-	if [ ! -e $dname/Universal ]; then
-		mkdir $dname/Universal
+	if [ ! -e "$basedir"/$dname/Universal ]; then
+		mkdir "$basedir"/$dname/Universal
 		true
 	fi
-	if [ ! -e $dname/LinearComplexity ]; then
-		mkdir $dname/LinearComplexity
+	if [ ! -e "$basedir"/$dname/LinearComplexity ]; then
+		mkdir "$basedir"/$dname/LinearComplexity
 		true
 	fi
-	if [ ! -e $dname/Serial ]; then
-		mkdir $dname/Serial
+	if [ ! -e "$basedir"/$dname/Serial ]; then
+		mkdir "$basedir"/$dname/Serial
 		true
 	fi
-	if [ ! -e $dname/ApproximateEntropy ]; then
-		mkdir $dname/ApproximateEntropy
+	if [ ! -e "$basedir"/$dname/ApproximateEntropy ]; then
+		mkdir "$basedir"/$dname/ApproximateEntropy
 		true
 	fi
-	if [ ! -e $dname/CumulativeSums ]; then
-		mkdir $dname/CumulativeSums
+	if [ ! -e "$basedir"/$dname/CumulativeSums ]; then
+		mkdir "$basedir"/$dname/CumulativeSums
 		true
 	fi
-	if [ ! -e $dname/RandomExcursions ]; then
-		mkdir $dname/RandomExcursions
+	if [ ! -e "$basedir"/$dname/RandomExcursions ]; then
+		mkdir "$basedir"/$dname/RandomExcursions
 		true
 	fi
-	if [ ! -e $dname/RandomExcursionsVariant ]; then
-		mkdir $dname/RandomExcursionsVariant
+	if [ ! -e "$basedir"/$dname/RandomExcursionsVariant ]; then
+		mkdir "$basedir"/$dname/RandomExcursionsVariant
 		true
 	fi
 done
