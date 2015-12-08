@@ -243,7 +243,6 @@ fileBasedBitStreams(char *streamFile)
 			exit(-1);
 		}
 		readBinaryDigitsInASCIIFormat(fp, streamFile);
-		fclose(fp);
 	}
 	else if ( mode == 1 ) {
 		if ( (fp = fopen(streamFile, "rb")) == NULL ) {
@@ -251,8 +250,8 @@ fileBasedBitStreams(char *streamFile)
 			exit(-1);
 		}
 		readHexDigitsInBinaryFormat(fp);
-		fclose(fp);
 	}
+	fclose(fp);
 }
 
 
