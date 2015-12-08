@@ -273,7 +273,6 @@ readBinaryDigitsInASCIIFormat(FILE *fp, char *streamFile)
 		for ( j=0; j<tp.n; j++ ) {
 			if ( fscanf(fp, "%1d", &bit) == EOF ) {
 				printf("ERROR:  Insufficient data in file %s.  %d bits were read.\n", streamFile, bitsRead);
-				fclose(fp);
 				free(epsilon);
 				return;
 			}
