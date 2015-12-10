@@ -303,11 +303,6 @@ computeMetrics(char *s, int test)
 		exit(-1);
 	}
 	
-	if ( (A = (double *)calloc(tp.numOfBitStreams, sizeof(double))) == NULL ) {
-		printf("Final Analysis Report aborted due to insufficient workspace\n");
-		return 0;
-	}
-	
 	/* Compute Metric 1: Proportion of Passing Sequences */
 	
 	count = 0; 		
