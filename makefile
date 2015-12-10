@@ -1,5 +1,5 @@
 CC = /usr/bin/gcc
-GCCFLAGS = -c -Wall
+GCCFLAGS = -c -Wall -m32
 ROOTDIR = .
 SRCDIR = $(ROOTDIR)/src
 OBJDIR = $(ROOTDIR)/obj
