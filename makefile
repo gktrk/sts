@@ -1,5 +1,5 @@
 CC = /usr/bin/gcc
-GCCFLAGS = -c -Wall -m32
+GCCFLAGS = -Wall -m32
 ROOTDIR = .
 SRCDIR = $(ROOTDIR)/src
 OBJDIR = $(ROOTDIR)/obj
@@ -24,71 +24,71 @@ $(OBJDIR)/assess.o: $(SRCDIR)/assess.c defs.h decls.h utilities.h
 	$(CC) -o $@ -c $(CFLAGS) $(SRCDIR)/assess.c
 
 $(OBJDIR)/frequency.o: $(SRCDIR)/frequency.c defs.h externs.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/frequency.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/frequency.c
 
 $(OBJDIR)/blockFrequency.o: $(SRCDIR)/blockFrequency.c defs.h externs.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/blockFrequency.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/blockFrequency.c
 
 $(OBJDIR)/cusum.o: $(SRCDIR)/cusum.c defs.h externs.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/cusum.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/cusum.c
 
 $(OBJDIR)/runs.o: $(SRCDIR)/runs.c defs.h externs.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/runs.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/runs.c
 
 $(OBJDIR)/longestRunOfOnes.o: $(SRCDIR)/longestRunOfOnes.c defs.h externs.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/longestRunOfOnes.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/longestRunOfOnes.c
 
 $(OBJDIR)/rank.o: $(SRCDIR)/rank.c defs.h externs.h matrix.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/rank.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/rank.c
 
 $(OBJDIR)/discreteFourierTransform.o: $(SRCDIR)/discreteFourierTransform.c \
         defs.h externs.h utilities.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/discreteFourierTransform.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/discreteFourierTransform.c
 
 $(OBJDIR)/nonOverlappingTemplateMatchings.o: \
         $(SRCDIR)/nonOverlappingTemplateMatchings.c defs.h externs.h utilities.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/nonOverlappingTemplateMatchings.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/nonOverlappingTemplateMatchings.c
 
 $(OBJDIR)/overlappingTemplateMatchings.o: \
         $(SRCDIR)/overlappingTemplateMatchings.c defs.h externs.h utilities.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/overlappingTemplateMatchings.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/overlappingTemplateMatchings.c
 
 $(OBJDIR)/universal.o: $(SRCDIR)/universal.c defs.h externs.h utilities.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/universal.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/universal.c
 
 $(OBJDIR)/approximateEntropy.o: $(SRCDIR)/approximateEntropy.c defs.h externs.h utilities.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/approximateEntropy.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/approximateEntropy.c
 
 $(OBJDIR)/randomExcursions.o: $(SRCDIR)/randomExcursions.c defs.h externs.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/randomExcursions.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/randomExcursions.c
 
 $(OBJDIR)/randomExcursionsVariant.o: $(SRCDIR)/randomExcursionsVariant.c defs.h externs.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/randomExcursionsVariant.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/randomExcursionsVariant.c
 
 $(OBJDIR)/serial.o: $(SRCDIR)/serial.c defs.h externs.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/serial.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/serial.c
 
 $(OBJDIR)/linearComplexity.o: $(SRCDIR)/linearComplexity.c defs.h externs.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/linearComplexity.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/linearComplexity.c
 
 $(OBJDIR)/dfft.o: $(SRCDIR)/dfft.c
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/dfft.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/dfft.c
 
 $(OBJDIR)/matrix.o: $(SRCDIR)/matrix.c defs.h externs.h utilities.h matrix.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/matrix.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/matrix.c
 
 $(OBJDIR)/genutils.o: $(SRCDIR)/genutils.c config.h genutils.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/genutils.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/genutils.c
 
 $(OBJDIR)/cephes.o: $(SRCDIR)/cephes.c cephes.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/cephes.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/cephes.c
 
 $(OBJDIR)/utilities.o: $(SRCDIR)/utilities.c defs.h externs.h utilities.h config.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/utilities.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/utilities.c
 
 $(OBJDIR)/generators.o: $(SRCDIR)/generators.c defs.h externs.h utilities.h \
         config.h generators.h
-	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/generators.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/generators.c
 
 $(OBJDIR):
 	@if [ ! -e $(OBJDIR) ]; then mkdir $(OBJDIR); fi
