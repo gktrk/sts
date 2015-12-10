@@ -18,10 +18,10 @@ OBJ = $(OBJDIR)/assess.o $(OBJDIR)/frequency.o $(OBJDIR)/blockFrequency.o \
 all: assess experiments-dirs
 
 assess: $(OBJDIR) $(OBJ)
-	$(CC) -o $@ $(CFLAGS) $(OBJ) -lm
+	$(CC) -o $@ $(GCCFLAGS) $(CFLAGS) $(OBJ) -lm
 
 $(OBJDIR)/assess.o: $(SRCDIR)/assess.c defs.h decls.h utilities.h
-	$(CC) -o $@ -c $(CFLAGS) $(SRCDIR)/assess.c
+	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/assess.c
 
 $(OBJDIR)/frequency.o: $(SRCDIR)/frequency.c defs.h externs.h
 	$(CC) -o $@ -c $(GCCFLAGS) $(CFLAGS) $(SRCDIR)/frequency.c
