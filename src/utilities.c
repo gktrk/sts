@@ -36,7 +36,6 @@ generatorOptions(char** streamFile)
 {
 	char	file[200];
 	int		option = NUMOFGENERATORS+1;
-	FILE	*fp;
 	
 	while ( (option < 0) || (option > NUMOFGENERATORS) ) {
 		option = displayGeneratorOptions();
@@ -47,12 +46,6 @@ generatorOptions(char** streamFile)
 				*streamFile = (char*)calloc(200, sizeof(char));
 				sprintf(*streamFile, "%s", file);
 				printf("\n");
-				if ( (fp = fopen(*streamFile, "r")) == NULL ) {
-					printf("File Error:  file %s could not be opened.\n",  *streamFile);
-					exit(-1);
-				}
-				else
-					fclose(fp);
 				break;
 			case 1:
 				*streamFile = "Linear-Congruential";
