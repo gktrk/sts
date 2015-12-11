@@ -4,6 +4,7 @@ U T I L I T I E S
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 #include <time.h>
 #include "../include/externs.h"
@@ -41,7 +42,8 @@ generatorOptions(char** streamFile)
 		option = displayGeneratorOptions();
 		switch( option ) {
 			case 0:
-				printf("\t\tUser Prescribed Input File: ");
+				printf("\t\tUser Prescribed Input File "
+					"(enter \"-\" for stdin): ");
 				scanf("%s", file);
 				*streamFile = (char*)calloc(200, sizeof(char));
 				sprintf(*streamFile, "%s", file);
@@ -221,8 +223,10 @@ fixParameters()
 void
 fileBasedBitStreams(char *streamFile)
 {
-	FILE	*fp;
+	FILE	*fp = stdin;
 	int		mode;
+	int read_stdin = (strlen(streamFile) == 1) &&
+		(strncmp(streamFile, "-", 1) == 0);
 	
 	printf("   Input File Format:\n");
 	printf("    [0] ASCII - A sequence of ASCII 0's and 1's\n");
@@ -231,20 +235,29 @@ fileBasedBitStreams(char *streamFile)
 	scanf("%1d", &mode);
 	printf("\n");
 	if ( mode == 0 ) {
-		if ( (fp = fopen(streamFile, "r")) == NULL ) {
-			printf("ERROR IN FUNCTION fileBasedBitStreams:  file %s could not be opened.\n",  streamFile);
-			exit(-1);
+		if (!read_stdin) {
+			if ( (fp = fopen(streamFile, "r")) == NULL ) {
+				printf("ERROR IN FUNCTION fileBasedBitStreams:"
+					" file %s could not be opened.\n",
+					streamFile);
+				exit(-1);
+			}
 		}
 		readBinaryDigitsInASCIIFormat(fp, streamFile);
 	}
 	else if ( mode == 1 ) {
-		if ( (fp = fopen(streamFile, "rb")) == NULL ) {
-			printf("ERROR IN FUNCTION fileBasedBitStreams:  file %s could not be opened.\n", streamFile);
-			exit(-1);
+		if (!read_stdin) {
+			if ( (fp = fopen(streamFile, "rb")) == NULL ) {
+				printf("ERROR IN FUNCTION fileBasedBitStreams:"
+					" file %s could not be opened.\n",
+					streamFile);
+				exit(-1);
+			}
 		}
 		readHexDigitsInBinaryFormat(fp);
 	}
-	fclose(fp);
+	if (!read_stdin)
+		fclose(fp);
 }
 
 
