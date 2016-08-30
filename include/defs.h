@@ -59,3 +59,10 @@ typedef struct _testParameters {
 	int		approximateEntropyBlockLength;
 	int		numOfBitStreams;
 } TP;
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                           G L O B A L  P A T H S
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+#ifndef  ASSESS_TEMPLATES_DIR
+#define  ASSESS_TEMPLATES_DIR "templates"
+#endif /*ASSESS_TEMPLATES_DIR*/
